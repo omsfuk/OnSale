@@ -10,13 +10,18 @@
 |1.0|初始版本，修订比较草率|omsfuk、Eric|
 |2.0|完全重写|omsfuk|
 
+## 格式说明
+```
+/api/{版本号}/xxxxxxx
+```
+
+
 
 ## 用户身份验证
 
 #### 登录
-```
-POST /api/v1/user/signIn
-```
+`POST /api/v2/user/signIn`
+
 |参数|必选|类型|说明|
 |-----|-----|
 |username|No|String|用户名|
@@ -60,9 +65,8 @@ POST /api/v1/user/signIn
 
 
 #### 注册
-```
-POST /api/v1/user/signUp
-```
+`POST /api/v2/user/signUp`
+
 |参数|必选|类型|说明|
 |-----|-----|-----|-----|
 |username|Yes|String|用户名。只能以数字、字母作为用户名。首字符不能为数字|
@@ -106,9 +110,8 @@ POST /api/v1/user/signUp
 ```
 
 #### 修改用户信息
-```
-POST /api/v1/user/update
-```
+`POST /api/v2/user/update`
+
 |参数|必选|类型|说明|
 |-----|-----|-----|-----|
 |id|Yes|int|用户id|
@@ -145,7 +148,7 @@ POST /api/v1/user/update
 ```
 
 #### 修改用户头像
-`POST /api/v1/user/portrait/update`
+`POST /api/v2/user/portrait/update`
 
 |参数|必选|类型|说明|
 |-----|-----|-----|-----|
@@ -164,7 +167,8 @@ response:
 
 
 #### 获取用户信息
-`POST /api/v1/user/find`
+`POST /api/v2/user/find`
+
 |参数|必选|类型|说明|
 |-----|-----|-----|-----|
 |id|No|int|用户id|
@@ -197,9 +201,8 @@ response:
 
 ## 商品
 #### 上传商品
-```
-POST /api/v1/goods/add
-```
+`POST /api/v2/goods/add`
+
 |属性名|必选|类型|说明|
 |-|-|
 |type|No|int|商品种类|
@@ -237,9 +240,8 @@ POST /api/v1/goods/add
 ```
 
 #### 删除商品
-```
-POST /api/v1/goods/delete
-```
+`POST /api/v2/goods/delete`
+
 |属性名|必选|类型|说明|
 |-|-|-|
 |goodId|Yes|int|商品id|
@@ -255,9 +257,8 @@ POST /api/v1/goods/delete
 
 
 #### 获取商品
-```
-POST /api/v1/goods/find
-```
+`POST /api/v2/goods/find`
+
 |属性名|必选|类型|说明|
 |-|-|-|
 |id|No|int|物品id|
@@ -312,13 +313,265 @@ POST /api/v1/goods/find
 }
 ```
 
+## 收藏夹
+
+#### 获得收藏
+`POST /api/v2/collection/find`
+
+|参数|必选|类型|说明|
+|-|-|-|-|
+|page|No|int||
+|rows|No|int||
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: [
+		{
+			id: 12,
+			type: 1,
+			title: "牙签",
+			desc: "lalalalala",
+			l1: "济南市"，
+			l2: "历下区"，
+			l3: "xxx",
+			latitude: "123.23",
+			longitude: "13.1",
+			date: "2017-9-10",
+			deadline: "2017-12-01",
+			userId: 1,
+			username: "omsfuk",
+			pic: ["/img/234abe234bac7621.png", "/img/234abe234bac7621.png"]
+		},
+		{
+			id: 11,
+			type: 1,
+			title: "牙膏",
+			desc: "lalalalala",
+			l1: "济南市"，
+			l2: "历下区"，
+			l3: "xxx",
+			latitude: "123.23",
+			longitude: "13.1",
+			date: "2017-9-10",
+			deadline: "2017-12-01",
+			userId: 1,
+			username: "omsfuk",
+			pic: ["/img/234abe234bac7621.png", "/img/234abe234bac7621.png"]
+		}
+	]
+}
+```
+
+#### 添加收藏
+`POST /api/v2/collection/add`
+
+|属性名|必选|类型|说明|
+|-|-|-|-|
+|goodsId|Yes|int|商品id|
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: {
+		{	
+			id: 11,
+			type: 1,
+			title: "牙膏",
+			desc: "lalalalala",
+			l1: "济南市"，
+			l2: "历下区"，
+			l3: "xxx",
+			latitude: "123.23",
+			longitude: "13.1",
+			date: "2017-9-10",
+			deadline: "2017-12-01",
+			userId: 1,
+			username: "omsfuk",
+			pic: ["/img/234abe234bac7621.png", "/img/234abe234bac7621.png"]
+		}	
+	}
+}
+```
+
+#### 删除收藏
+`POST /api/v2/collection/delete`
+
+
+|属性名|必选|类型|说明|
+|-|-|-|-|
+|goodsId|Yes|int|商品id|
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: {}
+}
+```
+
+## 历史记录
+#### 获得历史记录
+`POST /api/v2/history/find`
+
+|属性名|必选|类型|说明|
+|-|-|-|-|
+|page|Yes|int||
+|rows|Yes|int||
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: [
+		{
+			id: 12,
+			type: 1,
+			title: "牙签",
+			desc: "lalalalala",
+			l1: "济南市"，
+			l2: "历下区"，
+			l3: "xxx",
+			latitude: "123.23",
+			longitude: "13.1",
+			date: "2017-9-10",
+			deadline: "2017-12-01",
+			userId: 1,
+			username: "omsfuk",
+			pic: ["/img/234abe234bac7621.png", "/img/234abe234bac7621.png"]
+		},
+		{
+			id: 11,
+			type: 1,
+			title: "牙膏",
+			desc: "lalalalala",
+			l1: "济南市"，
+			l2: "历下区"，
+			l3: "xxx",
+			latitude: "123.23",
+			longitude: "13.1",
+			date: "2017-9-10",
+			deadline: "2017-12-01",
+			userId: 1,
+			username: "omsfuk",
+			pic: ["/img/234abe234bac7621.png", "/img/234abe234bac7621.png"]
+		}
+	]
+}
+```
+
+
+## 关注
+
+#### 获得我关注的
+`POST /api/vi/followed/find`
+
+|属性名|必选|类型|说明|
+|-|-|-|-|
+|page|No|int||
+|rows|No|int||
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: [
+		{
+			id: 100,
+			username: "omsfuk",
+			phone:"11100011100",
+			email:"123@123.com",
+			signature:"66666",
+			birthday:"1999-01-01",
+			mark:1000,
+			gender:"男",
+			fans: 10,
+			type: 1
+		},
+		{
+			id: 100,
+			username: "omsfuk",
+			phone:"11100011100",
+			email:"123@123.com",
+			signature:"66666",
+			birthday:"1999-01-01",
+			mark:1000,
+			gender:"男",
+			fans: 10,
+			type: 1
+		}
+	]
+}
+```
+
+#### 删除关注
+`POST /api/vi/followed/delete`
+
+|属性名|必选|类型|说明|
+|-|-|-|-|
+|userId|Yes|int|用户id|
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: {}
+}
+```
+
+#### 添加关注
+`POST /api/vi/followed/add`
+
+|属性名|必选|类型|说明|
+|-|-|-|-|
+|userId|Yes|int|用户id|
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: {}
+}
+```
+
+## 杂项
+#### 关键词提示
+```
+POST /api/v2/keywords
+```
+|属性名|必选|类型|说明|
+|-|-|-|-|
+|keyword|Yes|string|部分关键词|
+
+响应
+```
+{
+	status: 200,
+	message: "ok",
+	data: [
+		"title1",
+		"title2",
+		"title3"
+	]
+}
+```
+
 
 
 ## 评论
 
 #### 添加评论
 ```
-POST /api/v1/comment/add
+POST /api/v2/comment/add
 ```
 |属性名|必选|类型|说明|
 |-|-|-|-|
@@ -336,17 +589,15 @@ POST /api/v1/comment/add
 ```
 
 #### 删除评论
-```
-POST /api/v1/comment/delete
-```
+`POST /api/v2/comment/delete`
+
 |属性名|必选|类型|说明|
 |-|-|-|-|
 |commentId|Yes|int|评论id|
 		
 #### 获取评论
-```
-POST /api/v1/comment/find
-```
+`POST /api/v2/comment/find`
+
 |属性名|必选|类型|说明|
 |-|-|-|-|
 |id|No|int|评论id|
@@ -355,6 +606,7 @@ POST /api/v1/comment/find
 |page|No|int||
 |rows|No|int||
 备注：复合查询。id、goodsId、userId可以构成复合查询。
+
 响应
 ```
 {
@@ -396,6 +648,7 @@ POST /api/v1/comment/find
 
 ## 附录
 #### 用户属性
+
 |属性名称|类型|说明|
 |-|-|-|
 |id|int|用户唯一标识|
@@ -410,20 +663,6 @@ POST /api/v1/comment/find
 |birthday|string|生日，格式1901-01-01|
 |fans|int|粉丝数量|
 
-```
-{
-	id: 100,
-	username: "omsfuk",
-	phone:"11100011100",
-	email:"123@123.com",
-	signature:"66666",
-	birthday:"1999-01-01",
-	mark:1000,
-	gender:"男",
-	fans: 10,
-	type: 1
-}
-```
 
 #### 商品属性
 |属性名|类型|说明|
@@ -441,37 +680,8 @@ POST /api/v1/comment/find
 |deadline|string|截止时间|
 |username|string|上传者用户名|
 |pic|string|展示图片|
-```
-{
-	id: 12,
-	type: 1,
-	title: "牙签",
-	desc: "lalalalala",
-	l1: "济南市"，
-	l2: "历下区"，
-	l3: "xxx",
-	latitude: "123.23",
-	longitude: "13.1",
-	date: "2017-9-10",
-	deadline: "2017-12-01",
-	username: "omsfuk",
-	pic: ["/img/234abe234bac7621.png", "/img/234abe234bac7621.png"]
-}
-```
 
 
-id:132
-			    type:1, //商品种类 int 
-			    title:"title",//描述题目 String
-			    description:"description"//描述内容 String
-			    l1: 一级
-			    l2: 二级
-			    l3: 三级
-			    longitude:double  //经度
-  			    latitude:double   //纬度
-			    date:"2016-01-02 12:40:00", //上传时间 String
-			    deadline:"2018-08-09 09:09:09",//  截止String
-			    isValid:int
-			    userID: 上传者ID
-			    nickName: 上传者昵称
-			    pic: [“http://12 7” , ”http://2156] //图片url的String 数组.以后扩展成视频 url
+## 备注
+自动添加历史记录。
+
