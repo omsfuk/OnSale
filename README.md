@@ -23,7 +23,7 @@
 `POST /api/v2/user/signIn`
 
 |参数|必选|类型|说明|
-|-----|-----|
+|-----|-----|------|-----|
 |username|No|String|用户名|
 |phone|No|String|手机号|
 |email|No|String|邮箱|
@@ -204,7 +204,7 @@ response:
 `POST /api/v2/goods/add`
 
 |属性名|必选|类型|说明|
-|-|-|
+|-----|-----|------|-----|
 |type|No|int|商品种类|
 |title|Yes|string|标题|
 |desc|No|string|描述|
@@ -243,7 +243,7 @@ response:
 `POST /api/v2/goods/delete`
 
 |属性名|必选|类型|说明|
-|-|-|-|
+|-----|-----|------|-----|
 |goodId|Yes|int|商品id|
 
 响应
@@ -260,7 +260,7 @@ response:
 `POST /api/v2/goods/find`
 
 |属性名|必选|类型|说明|
-|-|-|-|
+|-----|-----|------|-----|
 |id|No|int|物品id|
 |type|No|int|类型|物品类型|
 |username|No|string|类型|
@@ -319,7 +319,7 @@ response:
 `POST /api/v2/collection/find`
 
 |参数|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |page|No|int||
 |rows|No|int||
 
@@ -369,7 +369,7 @@ response:
 `POST /api/v2/collection/add`
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |goodsId|Yes|int|商品id|
 
 响应
@@ -403,7 +403,7 @@ response:
 
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |goodsId|Yes|int|商品id|
 
 响应
@@ -420,7 +420,7 @@ response:
 `POST /api/v2/history/find`
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |page|Yes|int||
 |rows|Yes|int||
 
@@ -473,7 +473,7 @@ response:
 `POST /api/vi/followed/find`
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |page|No|int||
 |rows|No|int||
 
@@ -515,7 +515,7 @@ response:
 `POST /api/vi/followed/delete`
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |userId|Yes|int|用户id|
 
 响应
@@ -531,7 +531,7 @@ response:
 `POST /api/vi/followed/add`
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |userId|Yes|int|用户id|
 
 响应
@@ -549,7 +549,7 @@ response:
 POST /api/v2/keywords
 ```
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |keyword|Yes|string|部分关键词|
 
 响应
@@ -574,7 +574,7 @@ POST /api/v2/keywords
 POST /api/v2/comment/add
 ```
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |goodId|Yes|int|商品id|
 |cont|Yes|string|评论内容|
 
@@ -592,14 +592,14 @@ POST /api/v2/comment/add
 `POST /api/v2/comment/delete`
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |commentId|Yes|int|评论id|
 		
 #### 获取评论
 `POST /api/v2/comment/find`
 
 |属性名|必选|类型|说明|
-|-|-|-|-|
+|-----|-----|------|-----|
 |id|No|int|评论id|
 |goodsId|No|int|商品id|
 |userId|No|int|评论者id|
@@ -650,7 +650,7 @@ POST /api/v2/comment/add
 #### 用户属性
 
 |属性名称|类型|说明|
-|-|-|-|
+|-----|-----|------|-----|
 |id|int|用户唯一标识|
 |username|string|用户名，唯一标志|
 |phone|string|手机号码，唯一标识，可为空|
@@ -666,7 +666,7 @@ POST /api/v2/comment/add
 
 #### 商品属性
 |属性名|类型|说明|
-|-|-|
+|-----|-----|------|-----|
 |id|int|唯一标识|
 |type|int|商品种类。此属性有待商榷。后期可采用标签的形式，给物品分类|
 |title|string|标题|
