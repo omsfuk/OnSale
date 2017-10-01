@@ -29,6 +29,7 @@
 |phone|No|String|手机号|
 |email|No|String|邮箱|
 |password|Yes|String|密码|
+
 备注：username、phone、email至少有一个不为空。
 
 登录成功
@@ -75,6 +76,7 @@
 |email|No|String|邮箱|
 |password|No|String|密码|
 |code|No|String|验证码。当此项非空时，其他参数可忽略|
+
 备注：phone、email至少有一个不为空。会发送验证短信（邮件）。可通过此方法验证用户是否注册，此时不需要填写密码。
 
 验证成功
@@ -126,6 +128,7 @@
 |realId|Yes|string|身份证号码。改动会引起验证流程|
 |signature|Yes|string|签名|
 |birthday|Yes|string|生日|
+
 备注：验证流程有待商榷。
 
 响应
@@ -174,6 +177,7 @@ response:
 |-----|-----|-----|-----|
 |id|No|int|用户id|
 |username|No|string|用户名|
+
 备注：id和username任选其一。
 
 响应
@@ -606,6 +610,7 @@ POST /api/v2/comment/add
 |userId|No|int|评论者id|
 |page|No|int||
 |rows|No|int||
+
 备注：复合查询。id、goodsId、userId可以构成复合查询。
 
 响应
