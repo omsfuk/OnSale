@@ -45,7 +45,7 @@
 		signature:"66666",
 		birthday:"1999-01-01",
 		mark:1000,
-		gender:"男",
+		gender: 1,
 		fans: 10,
 		type: 1
 	}
@@ -92,7 +92,7 @@
 		signature:"66666",
 		birthday:"1999-01-01",
 		mark:1000,
-		gender:"男",
+		gender: 1,
 		fans: 10,
 		type: 1
 	}
@@ -144,7 +144,7 @@
 		signature:"66666",
 		birthday:"1999-01-01",
 		mark:1000,
-		gender:"男",
+		gender: 1,
 		fans: 10,
 		type: 1
 	}
@@ -193,7 +193,7 @@ response:
 		signature:"66666",
 		birthday:"1999-01-01",
 		mark:1000,
-		gender:"男",
+		gender: 1,
 		fans: 10,
 		type: 1
 	}
@@ -496,7 +496,7 @@ response:
 			signature:"66666",
 			birthday:"1999-01-01",
 			mark:1000,
-			gender:"男",
+			gender: 1,
 			fans: 10,
 			type: 1
 		},
@@ -508,7 +508,7 @@ response:
 			signature:"66666",
 			birthday:"1999-01-01",
 			mark:1000,
-			gender:"男",
+			gender: 1,
 			fans: 10,
 			type: 1
 		}
@@ -665,7 +665,7 @@ POST /api/v2/comment/add
 |mark|int|积分|
 |type|int|用户类型，普通用户或者商家|
 |password|string|密码|
-|gender|string|性别|
+|gender|int|性别。保密0，男1，女2。默认为0|
 |birthday|string|生日，格式1901-01-01|
 |fans|int|粉丝数量|
 
