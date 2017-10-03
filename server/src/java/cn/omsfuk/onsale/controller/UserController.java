@@ -37,4 +37,9 @@ public class UserController {
         return userService.register(user);
     }
 
+    @RequestMapping(value = "find", method = RequestMethod.POST)
+    public Result find(@Valid UserVO user) {
+        return userService.findUser(user);
+    }
+
 }

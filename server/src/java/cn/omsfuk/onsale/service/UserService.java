@@ -86,4 +86,14 @@ public class UserService {
         return false;
     }
 
+    public Result findUser(UserVO user) {
+        if (user.getId() != null) {
+            return ResultCache.getOk(userDAO.findUserById(user.getId()));
+        }
+        if (user.getUsername() != null) {
+            return ResultCache.getOk(userDAO.findUserByName(user.getUsername()));
+        }
+        return ResultCache.NO_SUCH_USER;
+    }
+
 }

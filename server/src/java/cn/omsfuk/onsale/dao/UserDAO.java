@@ -24,4 +24,11 @@ public interface UserDAO {
 
     Integer deleteUserTmpByEmail(String email);
 
+    /**
+     * 清除过期而为验证的临时用户
+     * @param validTime
+     * @return
+     */
+    Integer clearInvalidUser(int validTime);
+
 }

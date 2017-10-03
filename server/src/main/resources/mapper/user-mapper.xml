@@ -52,4 +52,9 @@
         WHERE id = #{id}
     </update>
 
+    <delete id="clearInvalidUser">
+        DELETE FROM user_tmp
+        WHERE ABS(TIMESTAMPDIFF(MINUTE, now(), date)) > #{validTime};
+    </delete>
+
 </mapper>
