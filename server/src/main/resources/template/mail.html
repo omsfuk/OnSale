@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta http-equiv=Content-Type content='text/html; charset=UTF-8'>
+    <style>
+        .panel {
+            background-color: #eeeeee;
+            padding: 20px 40px;
+        }
+        .panel-header {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .panel-body {
+            background-color: #ffffff;
+            padding: 50px 20px;
+            color: #757575;
+        }
+    </style>
+</head>
+<body>
+<div class="panel">
+    <div class="panel-header">
+        OnSale
+    </div>
+    <div class="panel-body">
+        <div style="border-bottom: 1px solid #bdbdbd;padding: 20px;margin: -40px -20px 0px -20px;font-size:25px;color: grey;">通知</div>
+        <div style="padding-top:20px">
+            Hi！亲爱的 ${email}<br/>
+            感谢您注册"打折啦"。<br/>
+            请点击链接激活帐号： <a href="${active_url}">${active_url}</a><br/>
+            (该链接在20分钟内有效，20分钟后需要重新获取)
+            如果上面不是链接形式，请将地址复制到您的浏览器(例如IE)的地址栏再访问。<br/>
+            如果您没有注册，也无须担心。我们不会再发邮件给您，并会删除您的邮件地址。<br/>
+            这是一封系统邮件，请勿回复。
+        </div>
+    </div>
+</div>
+</body>
+</html>

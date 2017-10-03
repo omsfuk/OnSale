@@ -16,4 +16,16 @@
           p:maxUploadSize="102400"
           p:maxInMemorySize="40960"/>
 
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <!-- 这里配置将使用上面国际化配置的messageSource -->
+        <!--<property name="validationMessageSource" ref="messageSource"/>-->
+    </bean>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp"
+        />
+
 </beans>

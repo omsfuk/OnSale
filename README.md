@@ -120,7 +120,6 @@
 |id|Yes|int|用户id|
 |type|Yes|int|用户类型|
 |gender|Yes|string|性别|
-|username|Yes|string|用户名|
 |password|Yes|string|密码|
 |phone|Yes|string|手机号。改动会引起验证流程|
 |email|Yes|string|邮箱。改动会引起验证流程|
@@ -648,6 +647,7 @@ POST /api/v2/comment/add
 
 ## 全局错误码
 ```
+300 Invalid input
 301 Unauthorized
 ```
 
@@ -658,7 +658,7 @@ POST /api/v2/comment/add
 |属性名称|类型|说明|
 |-----|-----|------|
 |id|int|用户唯一标识|
-|username|string|用户名，唯一标志|
+|username|string|用户名，唯一标志。注册后不可修改|
 |phone|string|手机号码，唯一标识，可为空|
 |email|string|邮箱，唯一标志，可为空|
 |signature|string|签名|

@@ -2,6 +2,54 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.omsfuk.onsale.dao.UserDAO">
 
-    <resultMap id="user" type="cn.omsfuk"
+    <resultMap id="user" type="cn.omsfuk.onsale.vo.UserVO">
+        <id column="id" property="id"/>
+    </resultMap>
+
+    <select id="findUserById" resultMap="user">
+        SELECT *
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <select id="findUserByName" resultMap="user">
+        SELECT *
+        FROM user
+        WHERE username = #{username}
+    </select>
+
+    <select id="findUserByPhone" resultMap="user">
+        SELECT *
+        FROM user
+        WHERE phone = #{phone}
+    </select>
+
+    <select id="findUserByEmail" resultMap="user">
+        SELECT *
+        FROM user
+        WHERE email = #{email}
+    </select>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT user_tmp(username, phone, email, signature, `type`, `password`, gender, birthday, `date`, ac_code)
+        VALUES (#{user.username}, #{user.phone}, #{user.email}, #{user.signature}, #{user.type},
+                #{user.password}, #{user.gender}, #{user.birthday}, now(), #{acCode})
+    </insert>
+    <insert id="activeUserByEmail">
+        INSERT INTO user(username, phone, email, signature, `type`, `password`, gender, birthday, `date`)
+        SELECT username, phone, email, signature, `type`, password, gender, birthday, date from user_tmp
+        WHERE email = #{email} and ac_code = #{acCode}
+    </insert>
+    <delete id="deleteUserTmpByEmail">
+        DELETE FROM user_tmp
+        WHERE email = #{email}
+    </delete>
+
+    <update id="updateUser">
+        UPDATE user
+        SET phone=#{phone}, email=#{email}, signature=#{signature}, type=#{type},
+            password=#{password}, gender=#{gender}, birthday=#{birthday}, date=#{date}
+        WHERE id = #{id}
+    </update>
 
 </mapper>

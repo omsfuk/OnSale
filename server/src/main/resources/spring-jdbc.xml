@@ -6,21 +6,17 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd ">
 
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-        p:location="classpath:jdbc.properties"
-        p:ignoreUnresolvablePlaceholders="true"/>
-
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
-          p:driverClassName="${driver}"
-          p:initialSize="${initialSize}"
-          p:url="${url}"
-          p:maxActive="${maxActive}"
-          p:username="${username}"
-          p:password="${password}"
-          p:testOnBorrow="${testOnBorrow}"
-          p:testOnReturn="${testOnReturn}"
-          p:testWhileIdle="${testWhileIdle}"
-          p:validationQuery="${validationQuery}"/>
+          p:driverClassName="${mysql.driver}"
+          p:initialSize="${mysql.initialSize}"
+          p:url="${mysql.url}"
+          p:maxActive="${mysql.maxActive}"
+          p:username="${mysql.username}"
+          p:password="${mysql.password}"
+          p:testOnBorrow="${mysql.testOnBorrow}"
+          p:testOnReturn="${mysql.testOnReturn}"
+          p:testWhileIdle="${mysql.testWhileIdle}"
+          p:validationQuery="${mysql.validationQuery}"/>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
           p:dataSource-ref="dataSource"
@@ -29,7 +25,7 @@
 
     <!-- MapperScannerConfig可以不加sqlSessionFactory属性，会自动查找，加上sqlSessionFactory-ref反而会报错， 可以加sqlSessionFactoryBeanName属性-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-          p:basePackage="cn.omsfuk.discount.dao"
+          p:basePackage="cn.omsfuk.onsale.dao"
           p:sqlSessionFactoryBeanName="sqlSessionFactory"
           p:annotationClass="org.springframework.stereotype.Repository"/>
 
