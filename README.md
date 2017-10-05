@@ -47,7 +47,8 @@
 		mark:1000,
 		gender: 1,
 		fans: 10,
-		type: 1
+		type: 1,
+		portrait: "http://localhost:808/img/234234234.jpg"
 	}
 }
 ```
@@ -84,18 +85,19 @@
 {
 	status: 200,
 	message: "ok",
-	data: {
-		id: 100,
-		username: "omsfuk",
-		phone:"11100011100",
-		email:"123@123.com",
-		signature:"66666",
-		birthday:"1999-01-01",
-		mark:1000,
-		gender: 1,
-		fans: 10,
-		type: 1
-	}
+	data:  1{
+			id: 100,
+			username: "omsfuk",
+			phone:"11100011100",
+			email:"123@123.com",
+			signature:"66666",
+			birthday:"1999-01-01",
+			mark:1000,
+			gender: 1,
+			fans: 10,
+			type: 1,
+			portrait: "http://localhost:8080/img/214sadfsf98asd76f.jpg"
+		}
 }
 ```
 验证失败
@@ -135,18 +137,19 @@
 {
 	status: 200,
 	message: "ok",
-	data: {
-		id: 100,
-		username: "omsfuk",
-		phone:"11100011100",
-		email:"123@123.com",
-		signature:"66666",
-		birthday:"1999-01-01",
-		mark:1000,
-		gender: 1,
-		fans: 10,
-		type: 1
-	}
+	data:  1{
+			id: 100,
+			username: "omsfuk",
+			phone:"11100011100",
+			email:"123@123.com",
+			signature:"66666",
+			birthday:"1999-01-01",
+			mark:1000,
+			gender: 1,
+			fans: 10,
+			type: 1,
+			portrait: "http://localhost:8080/img/214sadfsf98asd76f.jpg"
+		}
 }
 ```
 
@@ -155,7 +158,7 @@
 
 |参数|必选|类型|说明|
 |-----|-----|-----|-----|
-|img|Yes|File|图片文件。支持png，jpg，自动后台生成小图片。尾缀加sm获得小图片|
+|img|Yes|**String**|图片url。支持png，jpg。|
 
 响应
 ```
@@ -184,18 +187,19 @@ response:
 {
 	status:200
 	message:"OK"
-	data:{
-		id: 100,
-		username: "omsfuk",
-		phone:"11100011100",
-		email:"123@123.com",
-		signature:"66666",
-		birthday:"1999-01-01",
-		mark:1000,
-		gender: 1,
-		fans: 10,
-		type: 1
-	}
+	data: 1{
+			id: 100,
+			username: "omsfuk",
+			phone:"11100011100",
+			email:"123@123.com",
+			signature:"66666",
+			birthday:"1999-01-01",
+			mark:1000,
+			gender: 1,
+			fans: 10,
+			type: 1,
+			portrait: "http://localhost:8080/img/214sadfsf98asd76f.jpg"
+		}
 }
 ```
 错误码
@@ -218,7 +222,7 @@ response:
 |longitude|Yes|double|经度。153.12|
 |latitude|Yes|double|纬度。75.12|
 |deadline|Yes|string|截止时间。2017-10-11|
-|pic|No|File[]|展示图片|
+|pic|No|string[]|**展示图片的url**|
 
 上传成功
 ```
@@ -238,7 +242,7 @@ response:
 		date: "2017-9-10 12:01:20",
 		deadline: "2017-12-01 12:01:20",
 		username: "omsfuk",
-		pic: ["/img/234abe234bac7621.png", "/img/234abe234bac7621.png"]
+		pic: ["http://localhost:8080/img/234abe234bac7621.png", "http://localhost:8080/img/234abe234bac7621.png"]
 	}
 }
 ```
@@ -497,7 +501,8 @@ response:
 			mark:1000,
 			gender: 1,
 			fans: 10,
-			type: 1
+			type: 1,
+			portrait: "http://localhost:8080/img/2314124.png"
 		},
 		{
 			id: 100,
@@ -509,7 +514,8 @@ response:
 			mark:1000,
 			gender: 1,
 			fans: 10,
-			type: 1
+			type: 1,
+			portrait: "http://localhost:8080/img/2314124.png"
 		}
 	]
 }
