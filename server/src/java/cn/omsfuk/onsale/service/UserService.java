@@ -6,10 +6,12 @@ import cn.omsfuk.onsale.base.ResultCache;
 import cn.omsfuk.onsale.dao.UserDAO;
 import cn.omsfuk.onsale.util.ObjectUtil;
 import cn.omsfuk.onsale.util.RandomUtil;
+import cn.omsfuk.onsale.util.SessionUtil;
 import cn.omsfuk.onsale.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserService {
@@ -94,6 +96,18 @@ public class UserService {
             return ResultCache.getOk(userDAO.findUserByName(user.getUsername()));
         }
         return ResultCache.NO_SUCH_USER;
+    }
+
+    public Result update(UserVO user) {
+        if (SessionUtil.user().getId() != user.getId()) {
+            return ResultCache.Forbidden;
+        }
+        userDAO.updateUser(user);
+        return ResultCache.getOk(userDAO.findUserById(user.getId()));
+    }
+
+    public Result updatePortrait(MultipartFile multipartFile) {
+
     }
 
 }

@@ -1,5 +1,8 @@
 package cn.omsfuk.onsale.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,15 +11,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.stream.Stream;
 
 /**
  * Talk is cheap. Show me the code
  * 多说无益，代码上见真章
  * -------  by omsfuk  2017/9/10
  */
+
+@Component
 public abstract class FileUtil {
 
     public static String CLASSPATH;
+
+    @Value("${image.path}")
+    public static String IMAGE_PATH;
 
     static {
         try {
@@ -25,6 +34,38 @@ public abstract class FileUtil {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 固定保存到指定位置
+     * @return
+     */
+    public static boolean save(MultipartFile file) {
+        String extension = "jpg";
+        if (file.getName() != null && !"".equals(file.getName()) && file.getName().indexOf(".") != -1) {
+            extension = file.getName().substring(file.getName().indexOf("."));
+        }
+        try {
+            file.transferTo(new File(IMAGE_PATH + UUIDUtil.uuid() + extension));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean save(MultipartFile[] files) {
+        for (int i = 0; i < files.length; i++) {
+            if (!save(files[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
+
 
     public static String mixedWithDate(String fileName) {
         StringBuilder sb = new StringBuilder();

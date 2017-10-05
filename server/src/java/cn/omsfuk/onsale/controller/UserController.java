@@ -42,4 +42,15 @@ public class UserController {
         return userService.findUser(user);
     }
 
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    public Result update(UserVO user, Errors errors) {
+        if (errors.hasErrors()) {
+            return ResultCache.INVALID_INPUT;
+        }
+        if (user.getId() == null) {
+            return ResultCache.INVALID_INPUT;
+        }
+        return userService.update(user);
+    }
+
 }

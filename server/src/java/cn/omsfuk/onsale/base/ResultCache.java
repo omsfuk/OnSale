@@ -16,6 +16,10 @@ public class ResultCache {
 
     public static final Result USER_ALREADY_EXISTS = new Result(304, "User already exists", null);
 
+    public static final Result Forbidden = new Result(400, "Forbidden", null);
+
+    public static final Result INTERNAL_SERVER_ERROR = new Result(500, "INTERNAL_SERVER_ERROR", null);
+
 
 
 

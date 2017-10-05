@@ -119,16 +119,16 @@
 |-----|-----|-----|-----|
 |id|Yes|int|用户id|
 |type|Yes|int|用户类型|
-|gender|Yes|string|性别|
-|password|Yes|string|密码|
-|phone|Yes|string|手机号。改动会引起验证流程|
-|email|Yes|string|邮箱。改动会引起验证流程|
-|realName|Yes|string|真实姓名。改动会引起验证流程|
-|realId|Yes|string|身份证号码。改动会引起验证流程|
-|signature|Yes|string|签名|
-|birthday|Yes|string|生日|
+|gender|No|string|性别|
+|password|No|string|密码|
+|phone|No|string|手机号。改动会引起验证流程|
+|email|No|string|邮箱。改动会引起验证流程|
+|realName|No|string|真实姓名。改动会引起验证流程|
+|realId|No|string|身份证号码。改动会引起验证流程|
+|signature|No|string|签名|
+|birthday|No|string|生日|
 
-备注：验证流程有待商榷。
+备注：验证流程有待商榷。属性不填即为空，会按照null赋值（慎重）
 
 响应
 ```
@@ -639,9 +639,26 @@ POST /api/v2/comment/add
 ```
 
 
+## 图片
+#### 上传图片
+`POST /api/image/upload`
 
+|属性名|必选|类型|说明|
+|-----|-----|------|-----|
+|file|Yes|String[]|图片文件|
 
-
+上传成功
+```
+{
+    status: 200,
+    message: "ok",
+    data: [
+        "http://localhost:8080/image/ab623abbsdaewrq214.jpg",
+        "http://localhost:8080/image/safa3abbsd23423zv8.jpg",
+        "http://localhost:8080/image/3abbsdfxsdae98xzvi.jpg"
+    ]
+}
+```
 
 
 
@@ -649,6 +666,8 @@ POST /api/v2/comment/add
 ```
 300 Invalid input
 301 Unauthorized
+400 Forbidden
+500 Internal Server Error
 ```
 
 
