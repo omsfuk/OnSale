@@ -3,6 +3,7 @@ package cn.omsfuk.onsale.service;
 
 import cn.omsfuk.onsale.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Service
+@PropertySource("classpath:image.properties")
 public class FileService {
 
     public static String CLASSPATH;
@@ -32,10 +34,12 @@ public class FileService {
      * @return
      */
     public boolean save(MultipartFile file) {
-        String extension = "jpg";
-        if (file.getName() != null && !"".equals(file.getName()) && file.getName().indexOf(".") != -1) {
-            extension = file.getName().substring(file.getName().indexOf("."));
+        String extension = ".jpg";
+        String fileName = file.getOriginalFilename();
+        if (fileName != null && (!"".equals(fileName)) && fileName.indexOf(".") != -1) {
+            extension = fileName.substring(fileName.indexOf("."));
         }
+
         try {
             file.transferTo(new File(IMAGE_PATH + UUIDUtil.uuid() + extension));
         } catch (IOException e) {

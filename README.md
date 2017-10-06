@@ -673,6 +673,7 @@ POST /api/v2/comment/add
 300 Invalid input
 301 Unauthorized
 400 Forbidden
+404 Page not found
 500 Internal Server Error
 ```
 

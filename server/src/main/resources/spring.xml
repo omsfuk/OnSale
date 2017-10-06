@@ -14,6 +14,7 @@
         <property name="ignoreUnresolvablePlaceholders" value="true"></property>
         <property name="locations">
             <list>
+                <value>classpath:image.properties</value>
                 <value>classpath:jdbc.properties</value>
                 <value>classpath:mail.properties</value>
             </list>

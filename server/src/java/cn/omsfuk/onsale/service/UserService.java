@@ -106,8 +106,4 @@ public class UserService {
         return ResultCache.getOk(userDAO.findUserById(user.getId()));
     }
 
-    public Result updatePortrait(MultipartFile multipartFile) {
-
-    }
-
 }

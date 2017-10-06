@@ -41,4 +41,6 @@ public class UserVO {
     
     private Integer fans = 0;
 
+    private String portrait;
+
 }
